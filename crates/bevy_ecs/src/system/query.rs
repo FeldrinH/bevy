@@ -6,7 +6,7 @@ use crate::{
     },
     world::{Mut, World},
 };
-use bevy_tasks::TaskPool;
+// use bevy_tasks::TaskPool;
 use std::{any::TypeId, fmt::Debug};
 use thiserror::Error;
 
@@ -116,7 +116,7 @@ where
         };
     }
 
-    /// Runs `f` on each query result in parallel using the given task pool.
+    /* /// Runs `f` on each query result in parallel using the given task pool.
     #[inline]
     pub fn par_for_each(
         &self,
@@ -138,9 +138,9 @@ where
                 self.change_tick,
             )
         };
-    }
+    } */
 
-    /// Runs `f` on each query result in parallel using the given task pool.
+    /* /// Runs `f` on each query result in parallel using the given task pool.
     #[inline]
     pub fn par_for_each_mut(
         &mut self,
@@ -160,7 +160,7 @@ where
                 self.change_tick,
             )
         };
-    }
+    } */
 
     /// Gets the query result for the given `entity`
     #[inline]

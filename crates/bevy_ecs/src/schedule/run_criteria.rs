@@ -362,9 +362,9 @@ impl System for RunOnce {
         Cow::Borrowed(std::any::type_name::<RunOnce>())
     }
 
-    fn id(&self) -> SystemId {
+    /* fn id(&self) -> SystemId {
         self.system_id
-    }
+    } */
 
     fn new_archetype(&mut self, _archetype: &Archetype) {}
 

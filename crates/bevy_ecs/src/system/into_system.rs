@@ -11,7 +11,7 @@ use bevy_ecs_macros::all_tuples;
 use std::{borrow::Cow, marker::PhantomData};
 
 pub struct SystemState {
-    pub(crate) id: SystemId,
+    // pub(crate) id: SystemId,
     pub(crate) name: Cow<'static, str>,
     pub(crate) component_access_set: FilteredAccessSet<ComponentId>,
     pub(crate) archetype_component_access: Access<ArchetypeComponentId>,
@@ -28,7 +28,7 @@ impl SystemState {
             archetype_component_access: Access::default(),
             component_access_set: FilteredAccessSet::default(),
             is_send: true,
-            id: SystemId::new(),
+            // id: SystemId::new(),
             last_change_tick: 0,
         }
     }
@@ -115,10 +115,10 @@ where
         self.system_state.name.clone()
     }
 
-    #[inline]
+    /* #[inline]
     fn id(&self) -> SystemId {
         self.system_state.id
-    }
+    } */
 
     #[inline]
     fn new_archetype(&mut self, archetype: &Archetype) {

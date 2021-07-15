@@ -28,11 +28,11 @@ use std::{
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
 pub struct WorldId(u64);
 
-impl Default for WorldId {
+/* impl Default for WorldId {
     fn default() -> Self {
         WorldId(rand::random())
     }
-}
+} */
 
 /// [World] stores and exposes operations on [entities](Entity), [components](Component),
 /// and their associated metadata.
@@ -40,7 +40,7 @@ impl Default for WorldId {
 /// component type. Entity components can be created, updated, removed, and queried using a given
 /// [World].
 pub struct World {
-    id: WorldId,
+    // id: WorldId,
     pub(crate) entities: Entities,
     pub(crate) components: Components,
     pub(crate) archetypes: Archetypes,
@@ -57,7 +57,7 @@ pub struct World {
 impl Default for World {
     fn default() -> Self {
         Self {
-            id: Default::default(),
+            // id: Default::default(),
             entities: Default::default(),
             components: Default::default(),
             archetypes: Default::default(),
@@ -81,11 +81,11 @@ impl World {
         World::default()
     }
 
-    /// Retrieves this world's unique ID
+    /* /// Retrieves this world's unique ID
     #[inline]
     pub fn id(&self) -> WorldId {
         self.id
-    }
+    } */
 
     /// Retrieves this world's [Entities] collection
     #[inline]
@@ -902,7 +902,7 @@ impl World {
 impl fmt::Debug for World {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("World")
-            .field("id", &self.id)
+            //.field("id", &self.id)
             .field("entity_count", &self.entities.len())
             .field("archetype_count", &self.archetypes.len())
             .field("component_count", &self.components.len())

@@ -17,7 +17,7 @@ pub use system_param::*;
 
 #[cfg(test)]
 mod tests {
-    use std::any::TypeId;
+    /*     use std::any::TypeId;
 
     use crate::{
         archetype::Archetypes,
@@ -25,7 +25,7 @@ mod tests {
         component::Components,
         entity::{Entities, Entity},
         query::{Added, Changed, Or, With, Without},
-        schedule::{Schedule, Stage, SystemStage},
+        // schedule::{Schedule, Stage, SystemStage},
         system::{
             IntoExclusiveSystem, IntoSystem, Local, Query, QuerySet, RemovedComponents, Res,
             ResMut, System,
@@ -60,13 +60,13 @@ mod tests {
         system.run((), &mut world);
     }
 
-    fn run_system<S: System<In = (), Out = ()>>(world: &mut World, system: S) {
+    /* fn run_system<S: System<In = (), Out = ()>>(world: &mut World, system: S) {
         let mut schedule = Schedule::default();
         let mut update = SystemStage::parallel();
         update.add_system(system);
         schedule.add_stage("update", update);
         schedule.run(world);
-    }
+    } */
 
     #[test]
     fn query_system_gets() {
@@ -484,5 +484,5 @@ mod tests {
         let mut y = sys_y.system();
         x.initialize(&mut world);
         y.initialize(&mut world);
-    }
+    } */
 }

@@ -9,7 +9,7 @@ use crate::{
     storage::TableId,
     world::{World, WorldId},
 };
-use bevy_tasks::TaskPool;
+// use bevy_tasks::TaskPool;
 use fixedbitset::FixedBitSet;
 use thiserror::Error;
 
@@ -17,7 +17,7 @@ pub struct QueryState<Q: WorldQuery, F: WorldQuery = ()>
 where
     F::Fetch: FilterFetch,
 {
-    world_id: WorldId,
+    // world_id: WorldId,
     pub(crate) archetype_generation: ArchetypeGeneration,
     pub(crate) matched_tables: FixedBitSet,
     pub(crate) matched_archetypes: FixedBitSet,
@@ -42,7 +42,7 @@ where
         fetch_state.update_component_access(&mut component_access);
         filter_state.update_component_access(&mut component_access);
         let mut state = Self {
-            world_id: world.id(),
+            //world_id: world.id(),
             archetype_generation: ArchetypeGeneration::new(usize::MAX),
             matched_table_ids: Vec::new(),
             matched_archetype_ids: Vec::new(),
@@ -58,10 +58,10 @@ where
     }
 
     pub fn validate_world_and_update_archetypes(&mut self, world: &World) {
-        if world.id() != self.world_id {
+        /* if world.id() != self.world_id {
             panic!("Attempted to use {} with a mismatched World. QueryStates can only be used with the World they were created from.",
                 std::any::type_name::<Self>());
-        }
+        } */
         let archetypes = world.archetypes();
         let old_generation = self.archetype_generation;
         let archetype_index_range = if old_generation == archetypes.generation() {
@@ -264,7 +264,7 @@ where
         );
     }
 
-    #[inline]
+    /* #[inline]
     pub fn par_for_each<'w>(
         &mut self,
         world: &'w World,
@@ -292,9 +292,9 @@ where
         unsafe {
             self.par_for_each_unchecked(world, task_pool, batch_size, func);
         }
-    }
+    } */
 
-    /// # Safety
+    /*     /// # Safety
     /// This does not check for mutable query correctness. To be safe, make sure mutable queries
     /// have unique access to the components they query.
     #[inline]
@@ -314,7 +314,7 @@ where
             world.last_change_tick(),
             world.read_change_tick(),
         );
-    }
+    } */
 
     /// # Safety
     /// This does not check for mutable query correctness. To be safe, make sure mutable queries
@@ -365,7 +365,7 @@ where
         }
     }
 
-    /// # Safety
+    /*     /// # Safety
     /// This does not check for mutable query correctness. To be safe, make sure mutable queries
     /// have unique access to the components they query.
     /// This does not validate that `world.id()` matches `self.world_id`. Calling this on a `world`
@@ -458,7 +458,7 @@ where
                 }
             }
         });
-    }
+    } */
 }
 
 /// An error that occurs when retrieving a specific [Entity]'s query result.

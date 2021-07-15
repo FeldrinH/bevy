@@ -11,12 +11,12 @@ use std::borrow::Cow;
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
 pub struct SystemId(pub usize);
 
-impl SystemId {
+/* impl SystemId {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         SystemId(rand::random::<usize>())
     }
-}
+} */
 
 /// An ECS system that can be added to a [Schedule](crate::schedule::Schedule)
 ///
@@ -32,7 +32,7 @@ pub trait System: Send + Sync + 'static {
     type In;
     type Out;
     fn name(&self) -> Cow<'static, str>;
-    fn id(&self) -> SystemId;
+    // fn id(&self) -> SystemId;
     fn new_archetype(&mut self, archetype: &Archetype);
     fn component_access(&self) -> &Access<ComponentId>;
     fn archetype_component_access(&self) -> &Access<ArchetypeComponentId>;

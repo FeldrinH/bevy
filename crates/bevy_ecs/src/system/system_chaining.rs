@@ -11,7 +11,7 @@ pub struct ChainSystem<SystemA, SystemB> {
     system_a: SystemA,
     system_b: SystemB,
     name: Cow<'static, str>,
-    id: SystemId,
+    // id: SystemId,
     component_access: Access<ComponentId>,
     archetype_component_access: Access<ArchetypeComponentId>,
 }
@@ -24,9 +24,9 @@ impl<SystemA: System, SystemB: System<In = SystemA::Out>> System for ChainSystem
         self.name.clone()
     }
 
-    fn id(&self) -> SystemId {
+    /* fn id(&self) -> SystemId {
         self.id
-    }
+    } */
 
     fn new_archetype(&mut self, archetype: &Archetype) {
         self.system_a.new_archetype(archetype);
@@ -94,7 +94,7 @@ where
             system_b: system,
             archetype_component_access: Default::default(),
             component_access: Default::default(),
-            id: SystemId::new(),
+            // id: SystemId::new(),
         }
     }
 }

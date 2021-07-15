@@ -360,8 +360,8 @@ impl SparseSetIndex for ArchetypeComponentId {
 }
 
 pub struct Archetypes {
-    pub(crate) archetypes: Vec<Archetype>,
-    pub(crate) archetype_component_count: usize,
+    pub archetypes: Vec<Archetype>,
+    pub archetype_component_count: usize,
     archetype_ids: HashMap<ArchetypeIdentity, ArchetypeId>,
 }
 
